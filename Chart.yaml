@@ -15,3 +15,27 @@ sources:
 - https://github.com/Ciro99678/plane-ce-fix-helm/tree/main
 type: application
 version: 1.0.4
+annotations:
+  artifacthub.io/category: application 
+  artifacthub.io/images: |
+    - name: backend
+      image: makeplane/plane-backend:latest
+    - name: space
+      image: makeplane/plane-space:latest
+    - name: frontend
+      image: makeplane/plane-frontend:latest
+    - name: minio
+      image: minio/minio:RELEASE.2023-10-25T06-33-25Z
+    - name: postgres
+      image: postgres:15.2-alpine
+    - name: redis
+      image: redis:6.2.7-alpine
+    - name: busybox
+      image: busybox
+    - name: minio-mc
+      image: minio/mc
+  artifacthub.io/license: Apache-2.0 
+  artifacthub.io/maintainers: |
+    - name: csansone
+      email: ciro99678@gmail.com
+  artifacthub.io/prerelease: "false" 
