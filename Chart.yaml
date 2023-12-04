@@ -1,0 +1,17 @@
+apiVersion: v2
+appVersion: 0.14.0
+dependencies:
+- alias: cert-manager
+  condition: cert-manager.enabled
+  name: cert-manager
+  repository: https://charts.jetstack.io
+  version: 1.13.2
+description: Meet Plane. An open-source software development tool to manage issues,
+  sprints, and product roadmaps with peace of mind.
+home: https://plane.so
+icon: https://plane.so/favicon/favicon-32x32.png
+name: plane-ce
+sources:
+- https://github.com/makeplane/plane
+type: application
+version: 1.0.4

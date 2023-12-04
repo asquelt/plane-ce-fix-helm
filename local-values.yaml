@@ -1,0 +1,129 @@
+planeVersion: latest
+
+dockerhub:
+  enabled: false
+  loginid: makeplane
+  password: makeplane
+
+ingress:
+  host: 'app.dev.ce.plane.so'
+  ingressClass: 'nginx'
+  clientMaxBodySize: 10m
+
+ssl:
+  createIssuer: true
+  issuer: cloudflare # Allowed : cloudflare, digitalocean
+  # token: sample-token-id
+  token: rOXLQT-q86KaWU1qxxlUEInl-Pk1OQxMHrUol_xL
+
+  # STAGING
+  # server: https://acme-staging-v02.api.letsencrypt.org/directory
+
+  # PRODUCTION
+  server: https://acme-v02.api.letsencrypt.org/directory 
+
+  email: helpdesk@company.com
+
+  generateCerts: true
+  domains: 
+  - "app.dev.ce.plane.so"
+  - "minio.dev.ce.plane.so"
+  # - "plane.mydomain.com"
+
+redis:
+  local_setup: true
+  image: redis:6.2.7-alpine
+  servicePort: 6379
+  storageClass: longhorn
+  volumeSize: 1Gi
+
+postgres:
+  local_setup: true
+  image: postgres:15.2-alpine
+  servicePort: 5432
+  storageClass: longhorn
+  volumeSize: 5Gi
+
+minio:
+  local_setup: true
+  image: minio/minio:RELEASE.2023-10-25T06-33-25Z
+  servicePort: 9000
+  consolePort: 9090
+  storageClass: longhorn
+  volumeSize: 5Gi
+  root_user: admin
+  root_password: password
+  ingress: 'minio.dev.ce.plane.so'
+
+web:
+  replicas: 3
+  servicePort: 3000
+  image: makeplane/plane-frontend
+
+space:
+  replicas: 3
+  servicePort: 3000
+  image: makeplane/plane-space
+
+api:
+  replicas: 3
+  servicePort: 8000
+  image: makeplane/plane-backend
+
+worker:
+  image: makeplane/plane-backend
+
+beatworker:
+  image: makeplane/plane-backend
+
+smtp:
+  host: ""
+  user: ""
+  password:  ""
+  port: 587
+  from:  "Team Plane &lt;team@mailer.plane.so&gt;"
+  use_tls: 1
+  use_ssl: 0
+
+openai:
+  api_base: "https://api.openai.com/v1"
+  api_key: "" #looks like => sk-xxxxxxx
+  model: "gpt-3.5-turbo"
+
+
+oauth:
+  enabled: 0
+  google_client_id: ""
+  github_client_id: ""
+  github_client_secret: ""
+
+env:
+  pgdb_username: plane
+  pgdb_password: plane
+  pgdb_name: plane
+  pgdb_remote_host: "" #INCASE OF REMOTE HOST ONLY
+  pgdb_remote_url: "" #INCASE OF REMOTE PG DB URL ONLY
+
+  # NEXT_PUBLIC_DEPLOY_URL:  ""
+  # REDIS
+  remote_redis_url: "" #INCASE OF REMOTE REDIS ONLY
+  # POSTGRES DB VALUES
+
+  # DATA STORE
+  docstore_bucket: "uploads"
+  doc_upload_size_limit: "5242880" # 5MB
+
+  # REQUIRED IF MINIO LOCAL SETUP IS FALSE
+  aws_access_key: ""
+  aws_secret_access_key: ""
+  aws_region: ""
+  
+  
+  # # LOGIN/SIGNUP SETTINGS
+  enable_signup: 1
+  enable_email_password: 1
+  enable_magic_link_login: 0
+  secret_key: "60gp0byfz2dvffa45cxl20p1scy9xbpf6d8c5y0geejgkyp1b5"
+
+  sentry_dsn: "https://5fe26ee2c699b0b9bb6a68ec1a973c3a@o4505441148272640.ingest.sentry.io/4506154840555520"
+  
