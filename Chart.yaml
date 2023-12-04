@@ -7,11 +7,11 @@ dependencies:
   repository: https://charts.jetstack.io
   version: 1.13.2
 description: Meet Plane. An open-source software development tool to manage issues,
-  sprints, and product roadmaps with peace of mind.
+  sprints, and product roadmaps with peace of mind. This version is forked and fixed for an error caused by ingress yaml "backend error"
 home: https://plane.so
 icon: https://plane.so/favicon/favicon-32x32.png
-name: plane-ce
+name: plane-ce-fix
 sources:
-- https://github.com/makeplane/plane
+- https://github.com/Ciro99678/plane-ce-fix-helm/tree/main
 type: application
 version: 1.0.4
