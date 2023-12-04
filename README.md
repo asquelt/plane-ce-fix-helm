@@ -1,18 +1,23 @@
 ### Plane Helm Setup
 ---
 
-Follow below steps to setup **Plane**
+# plane
 
-Add Helm Repo
-```
-helm repo add makeplane https://helm.plane.so/
-```
+![Version: 0.0.1](https://img.shields.io/badge/Version-0.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v0.12.2-dev](https://img.shields.io/badge/AppVersion-v0.12.2--dev-informational?style=flat-square)
 
-You must refer the configuration variables before proceeding. This can be done by running the below command or visiting **Configuration** tab. 
-```
-helm show values plane-ce --repo https://helm.plane.so 
-```
+🔥🔥🔥 Open Source JIRA, Linear and Height Alternative. Plane helps you track your issues, epics, and product roadmaps in the simplest way possible.
 
+**Homepage:** <https://plane.so/>
+
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| csansone | <ciro99678@gmail.com> | <https://github.com/Ciro99678> |
+
+## Source Code
+
+* <https://github.com/makeplane/plane>
 
 Basic Install
 ```
