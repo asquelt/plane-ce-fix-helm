@@ -1,3 +1,50 @@
 apiVersion: v1
-entries: {}
-generated: "2023-12-04T13:16:40.776219663+01:00"
+entries:
+  plane-ce-fix:
+  - annotations:
+      artifacthub.io/category: application
+      artifacthub.io/images: |
+        - name: backend
+          image: makeplane/plane-backend:latest
+        - name: space
+          image: makeplane/plane-space:latest
+        - name: frontend
+          image: makeplane/plane-frontend:latest
+        - name: minio
+          image: minio/minio:RELEASE.2023-10-25T06-33-25Z
+        - name: postgres
+          image: postgres:15.2-alpine
+        - name: redis
+          image: redis:6.2.7-alpine
+        - name: busybox
+          image: busybox
+        - name: minio-mc
+          image: minio/mc
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/maintainers: |
+        - name: csansone
+          email: ciro99678@gmail.com
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 0.14.0
+    created: "2023-12-04T13:22:38.565063879+01:00"
+    dependencies:
+    - alias: cert-manager
+      condition: cert-manager.enabled
+      name: cert-manager
+      repository: https://charts.jetstack.io
+      version: 1.13.2
+    description: Meet Plane. An open-source software development tool to manage issues,
+      sprints, and product roadmaps with peace of mind. This version is forked and
+      fixed for an error caused by ingress yaml "backend error"
+    digest: df50da378784b41b5af7e79f67acb18ff29195df7f7bd8bcd3f7a021a671a150
+    home: https://plane.so
+    icon: https://plane.so/favicon/favicon-32x32.png
+    name: plane-ce-fix
+    sources:
+    - https://github.com/Ciro99678/plane-ce-fix-helm/tree/main
+    type: application
+    urls:
+    - plane-ce-fix-1.0.4.tgz
+    version: 1.0.4
+generated: "2023-12-04T13:22:38.561770139+01:00"
