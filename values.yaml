@@ -10,6 +10,7 @@ dockerhub:
     backend: makeplane/plane-backend
 
 ingress:
+  enabled: true
   appHost: 'plane.example.com'
   minioHost: 'plane-minio.example.com'
   ingressClass: 'nginx'
@@ -30,7 +31,7 @@ redis:
   local_setup: true
   image: redis:6.2.7-alpine
   servicePort: 6379
-  storageClass: longhorn
+  storageClass: local-path
   volumeSize: 1Gi
 
 postgres:
@@ -38,13 +39,13 @@ postgres:
   image: postgres:15.2-alpine
   servicePort: 5432
   cliConnectPort: 30000
-  storageClass: longhorn
+  storageClass: local-path
   volumeSize: 5Gi
 
 minio:
   local_setup: true
   image: minio/minio:RELEASE.2023-10-25T06-33-25Z
-  storageClass: longhorn
+  storageClass: local-path
   volumeSize: 5Gi
   root_user: admin
   root_password: password
