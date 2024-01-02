@@ -6,6 +6,9 @@ metadata:
   name: {{ .Release.Name }}-ingress
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: {{ .Values.ingress.clientMaxBodySize | default "5m" | quote}}
+    {{- if .Values.ssl.generateCerts }}
+    cert-manager.io/cluster-issuer: {{ .Values.ingress.issuer | default "letsencrypt" | quote}}
+    {{- end }}
 spec:
   ingressClassName: {{ .Values.ingress.ingressClass }}
   rules:
