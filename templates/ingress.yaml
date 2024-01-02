@@ -56,12 +56,14 @@ spec:
             pathType: Prefix
     {{- end }}
   tls:
-    {{- if .Values.ssl.generateCerts }}
+    {{- if or .Values.ssl.generateCerts .Values.ssl.enable }}
     - hosts:
       - {{ .Values.ingress.appHost | quote }}
       {{ if .Values.ingress.minioHost }}
       - {{ .Values.ingress.minioHost | quote }}
       {{ end }}
+       {{- if .Values.ssl.generateCerts }}
       secretName: {{ .Release.Name }}-ssl-cert
+      {{ end }}
     {{- end }}
 {{- end }}

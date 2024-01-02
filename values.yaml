@@ -16,6 +16,7 @@ ingress:
   ingressClass: 'nginx'
   clientMaxBodySize: 10m
 ssl:
+  enable: true
   createIssuer: false
   issuer: "http" # Allowed : cloudflare, digitalocean, http
   token: "" # not required for http
